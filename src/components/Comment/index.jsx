@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Container from './styles';
 
 const Comment = ({ comment }) => (
-	<Container>
+	<Container className="comment_box">
 		<header>
 			{comment.writer === 'USER' && <h4>Equipe</h4>}
 			{comment.writer === 'CLIENT' && <h4>Cliente</h4>}

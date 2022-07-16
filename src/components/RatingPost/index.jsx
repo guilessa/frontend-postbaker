@@ -111,6 +111,7 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 				),
 			};
 
+			newPost.caption.replace(/(?:\r\n|\r|\n)/g, '<br>');
 			setPost(newPost);
 			updatePosts(data.id, newPost);
 		} catch (e) {
@@ -240,43 +241,59 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 						</Carrousel>
 					)}
 				</ImageContainer>
-				<Content width={sizeOfcarrousel.widthLess}>
+				<Content width={sizeOfcarrousel.widthLess} maxWidth="70">
+					<h4>Data da Postagem</h4>
+					<p>
+						{format(new Date(), "d 'de' MMMM 'de' yyyy 'às' HH:mm", {
+							locale: ptBr,
+						})}
+					</p>
+					<br />
 					<h3>O que achou do post?</h3>
 					<form>
 						<div className="buttons">
-							<button
-								onClick={() => {
-									changeStatus('APPROVED');
-								}}
-								className={`good ${
-									post?.status === 'APPROVED' ? 'active' : ''
-								}`}
-								type="button"
-							>
-								<ImCheckmark color="#fff" size={24} />
-							</button>
-							<button
-								onClick={() => {
-									changeStatus('ATTENTION');
-								}}
-								className={`edit ${
-									post?.status === 'ATTENTION' ? 'active' : ''
-								}`}
-								type="button"
-							>
-								<TiPencil color="#fff" size={24} />
-							</button>
-							<button
-								onClick={() => {
-									changeStatus('CANCELED');
-								}}
-								className={`cancel ${
-									post?.status === 'CANCELED' ? 'active' : ''
-								}`}
-								type="button"
-							>
-								<BsX color="#fff" size={24} />
-							</button>
+							<span className="rateButtonSpan">
+								<button
+									onClick={() => {
+										changeStatus('APPROVED');
+									}}
+									className={`good ${
+										post?.status === 'APPROVED' ? 'active' : ''
+									}`}
+									type="button"
+								>
+									<ImCheckmark color="#fff" size={24} />
+								</button>
+								<p>Aprovar</p>
+							</span>
+							<span className="rateButtonSpan">
+								<button
+									onClick={() => {
+										changeStatus('ATTENTION');
+									}}
+									className={`edit ${
+										post?.status === 'ATTENTION' ? 'active' : ''
+									}`}
+									type="button"
+								>
+									<TiPencil color="#fff" size={24} />
+								</button>
+								<p>Alterar</p>
+							</span>
+							<span className="rateButtonSpan">
+								<button
+									onClick={() => {
+										changeStatus('CANCELED');
+									}}
+									className={`cancel ${
+										post?.status === 'CANCELED' ? 'active' : ''
+									}`}
+									type="button"
+								>
+									<BsX color="#fff" size={24} />
+								</button>
+								<p>Rejeitado</p>
+							</span>
 						</div>
 					</form>
 					<div className="content_container">
