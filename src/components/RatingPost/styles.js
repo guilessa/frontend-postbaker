@@ -32,6 +32,7 @@ export default styled.div`
 	}
 
 	.content_text {
+		white-space: pre-line;
 		color: #fff;
 		font-size: 1.12rem;
 		font-weight: 600;
@@ -66,7 +67,6 @@ export default styled.div`
 
 		display: flex;
 		padding-top: 2.5rem;
-
 		.buttons {
 			display: flex;
 			justify-content: space-evenly;
@@ -80,6 +80,7 @@ export default styled.div`
 				width: 4.12rem;
 				height: 4.12rem;
 				opacity: 0.29;
+				text-align: center;
 
 				:not(:last-child) {
 					margin-right: 0.81rem;
@@ -100,6 +101,15 @@ export default styled.div`
 					opacity: 1;
 				}
 			}
+
+			.rateButtonSpan {
+				text-align: center;
+
+				p {
+					padding-top: 1rem;
+					font-size: 0.9rem;
+				}
+			}
 		}
 	}
 
@@ -108,9 +118,24 @@ export default styled.div`
 		margin: 2rem 0;
 		padding-top: 2rem;
 		min-height: 8.2rem;
-		max-height: 30rem;
+		height: auto;
 		overflow: auto;
 		border-top: 1px solid #e5e5e5;
+		display: flex;
+		flex-direction: column;
+
+		.comment_box {
+			display: block;
+			height: auto;
+			span {
+				padding-right: 0.8rem;
+			}
+			p {
+				padding-right: 1rem;
+				line-break: auto;
+				word-break: break-all;
+			}
+		}
 	}
 
 	.newPost {
@@ -221,7 +246,7 @@ export const ImageContainer = styled.div.attrs(({ width, height }) => {
 	} */
 `;
 
-export const Content = styled.div.attrs(({ width }) => {
+export const Content = styled.div.attrs(({ width, maxWidth }) => {
 	if (window.innerWidth <= 900) {
 		return {
 			style: {
@@ -232,6 +257,7 @@ export const Content = styled.div.attrs(({ width }) => {
 
 	return {
 		style: {
+			maxWidth: `${maxWidth}px`,
 			minWidth: `${width}px`,
 		},
 	};

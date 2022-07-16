@@ -87,6 +87,14 @@ const Login = () => {
 								<Link to="/login/esqueciSenha">Esqueci minha senha</Link>
 							</div>
 						</div>
+						<div className="container_buttons">
+							<div className="container_forget">
+								<p>
+									Ainda não tem conta?{' '}
+									<Link to="/login/cadastrar">Clique aqui</Link> e cadastre-se.
+								</p>
+							</div>
+						</div>
 					</form>
 				</div>
 				<span>Aprovando postagens desde 2021</span>

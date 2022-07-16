@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { RiArrowRightSLine } from 'react-icons/ri';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 
 import Container from './styles';
 
+import informationIcon from '../../assets/icons/information.png';
+import userIcon from '../../assets/icons/profile-user.png';
+import questionIcon from '../../assets/icons/question.png';
 import { Context } from '../../services/context';
 
 const Aside = () => {
@@ -48,13 +50,27 @@ const Aside = () => {
 					))}
 				</div>
 				<div>
-					<Link to="/dashboard/configuracao" className="comment">
-						<div>
-							<span>Você está logado como</span>
-							<p>{user?.name || 'Usuário'} </p>
-						</div>
-						<RiArrowRightSLine color="#FCDA7B" size={32} />
-					</Link>
+					<span className="menuInferior">
+						<Link to="/dashboard/configuracao" className="comment menuItem">
+							<img src={userIcon} alt="Minhas Configurações" className="icon" />
+							<p>Minhas Configurações</p>
+						</Link>
+						<a href="https://faq.postbaker.com.br" className="comment menuItem">
+							<img
+								src={informationIcon}
+								alt="Como funciona?"
+								className="icon"
+							/>
+							<p>Como funciona?</p>
+						</a>
+						<a
+							href="https://postbaker.com.br/ajuda"
+							className="comment menuItem"
+						>
+							<img src={questionIcon} alt="Preciso de ajuda" className="icon" />
+							<p>Preciso de ajuda</p>
+						</a>
+					</span>
 
 					<button
 						type="button"

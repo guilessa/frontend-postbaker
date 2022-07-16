@@ -94,6 +94,14 @@ export default styled.div`
 							text-decoration: none;
 						}
 					}
+
+					.container_forget a {
+						font-size: 0.8rem;
+					}
+
+					.container_forget p {
+						font-size: 0.8rem;
+					}
 				}
 			}
 		}

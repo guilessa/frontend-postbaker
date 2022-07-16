@@ -58,8 +58,8 @@ export default styled.aside`
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			height: 12.25rem;
-			padding: 2.5rem 3rem;
+			height: 16.25rem;
+			padding: 2rem 1rem 3rem 3rem;
 
 			button:last-child {
 				display: flex;
@@ -88,7 +88,7 @@ export default styled.aside`
 				border: none;
 				display: flex;
 				align-items: center;
-				justify-content: space-between;
+				justify-content: start;
 				max-width: 11.81rem;
 				color: #5d5d5d;
 				text-decoration: none;
@@ -104,9 +104,20 @@ export default styled.aside`
 					font-weight: 300;
 				}
 				p {
-					font-size: 1rem;
+					font-size: 0.8rem;
 					font-weight: bold;
+					margin-left: 1rem;
 				}
+			}
+
+			.menuInferior {
+				.menuItem {
+					padding-bottom: 0.7rem;
+				}
+			}
+
+			.icon {
+				width: 1.3rem;
 			}
 		}
 	}
