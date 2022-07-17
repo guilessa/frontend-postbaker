@@ -307,7 +307,6 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 							<div>
 								<h4>Legenda</h4>
 								<p className="display-linebreak">{post?.caption}</p>
-								{console.log(post?.caption)}
 							</div>
 						) : null}
 					</div>

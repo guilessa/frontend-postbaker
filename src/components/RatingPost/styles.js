@@ -143,6 +143,8 @@ export default styled.div`
 
 		.display-linebreak {
 			white-space: pre-line;
+			line-break: auto;
+			word-break: break-all;
 		}
 	}
 
