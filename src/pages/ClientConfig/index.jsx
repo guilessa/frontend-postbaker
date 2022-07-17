@@ -110,6 +110,14 @@ const ClientConfig = () => {
 								locale: ptBr,
 							}
 						),
+						formatedPostingDate: format(
+							parseISO(post.postingDate),
+							"dd 'de' MMMM 'de' yyyy 'às' HH:mm",
+							{
+								locale: ptBr,
+							}
+						),
+						formatedCaption: post.caption.replace(/(?:\r\n|\r|\n)/g, '<br>'),
 					};
 				});
 				const postsFormatNotArchived = postsFormat.filter(
