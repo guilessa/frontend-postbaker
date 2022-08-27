@@ -28,7 +28,7 @@ function Image({ handleChange, value, type, loading, error, retry, ...rest }) {
 		onDrop,
 		maxFiles: 1,
 		accept: type === 'Imagem' ? 'image/*' : 'video/*',
-		maxSize: type === 'Imagem' ? 1024 * 1024 * 2.5 : 1024 * 1024 * 20,
+		maxSize: type === 'Imagem' ? 1024 * 1024 * 25 : 1024 * 1024 * 200,
 	});
 
 	useEffect(() => {
@@ -38,7 +38,7 @@ function Image({ handleChange, value, type, loading, error, retry, ...rest }) {
 					handleShowPopUp(
 						'error',
 						`Tamanho máximo permitido de upload: ${
-							type === 'Imagem' ? '2,5mb' : '20mb'
+							type === 'Imagem' ? '25mb' : '200mb'
 						}, favor compactar  ${
 							type === 'a imagem' ? 'imagem' : 'o vídeo'
 						} antes de realizar o upload`

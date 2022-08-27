@@ -101,7 +101,7 @@ function CarrouselContainer({
 	const { getRootProps, getInputProps, fileRejections } = useDropzone({
 		onDrop,
 		accept: 'image/*',
-		maxSize: 1024 * 1024 * 2.5,
+		maxSize: 1024 * 1024 * 25,
 	});
 
 	useEffect(() => {
@@ -110,7 +110,7 @@ function CarrouselContainer({
 				if (fileError.code === 'file-too-large') {
 					handleShowPopUp(
 						'error',
-						'Tamanho máximo permitido de upload: 2,5mb, favor compactar a imagem antes de realizar o upload'
+						'Tamanho máximo permitido de upload: 25mb, favor compactar a imagem antes de realizar o upload'
 					);
 				}
 			});
