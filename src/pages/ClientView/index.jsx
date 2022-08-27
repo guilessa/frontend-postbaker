@@ -90,13 +90,6 @@ const ClientView = () => {
 						statusText,
 						files,
 						comments: newComment,
-						dataFormat: format(
-							parseISO(postMap.postingDate),
-							"d eeeeee, 'de' MMMM 'às' HH:mm",
-							{
-								locale: ptBr,
-							}
-						),
 					};
 				});
 				const postsFilters = postsFormat.filter(

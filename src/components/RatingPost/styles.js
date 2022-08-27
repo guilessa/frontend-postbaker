@@ -136,29 +136,66 @@ export default styled.div`
 				word-break: break-all;
 			}
 		}
+
+		h4 {
+			padding-bottom: 1rem;
+		}
+
+		.display-linebreak {
+			white-space: pre-line;
+			line-break: auto;
+			word-break: break-all;
+		}
 	}
 
 	.newPost {
 		display: flex;
 		flex-direction: column;
 		label {
-			font-size: 0.5rem;
+			font-size: 0.6rem;
 			color: #5d5d5d;
 			margin-left: 0.5rem;
 		}
 
-		input {
-			width: 100%;
-			margin-top: 0.5rem;
-			border: 1px solid #e4e4e4;
-			height: 3rem;
-			border-radius: 8px;
-			outline: none;
-			padding-left: 1.5rem;
-			font-size: 0.69rem;
-			color: #5d5d5d;
-			font-weight: 500;
-			box-shadow: 0px 15px 40px rgba(183, 183, 183, 0.1);
+		div {
+			display: flex;
+			align-items: center;
+			margin-top: 0.1rem;
+
+			input {
+				width: 70%;
+				border: 1px solid #e4e4e4;
+				height: 3rem;
+				border-radius: 8px;
+				outline: none;
+				padding-left: 1.5rem;
+				padding-right: 1rem;
+				font-size: 0.69rem;
+				color: #5d5d5d;
+				font-weight: 500;
+				box-shadow: 0px 15px 40px rgba(183, 183, 183, 0.1);
+			}
+
+			button {
+				height: 3rem;
+				border: none;
+				font-weight: bold;
+				cursor: pointer;
+				transition: filter linear 0.2s;
+
+				:hover {
+					filter: brightness(0.95);
+				}
+			}
+
+			#smallButton {
+				margin-left: 0.3rem;
+				width: 30%;
+			}
+
+			#fullButton {
+				width: 100%;
+			}
 		}
 	}
 

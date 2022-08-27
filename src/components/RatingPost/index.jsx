@@ -28,6 +28,8 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 		widthLess: 0,
 	});
 	const [currentSlide, setCurrentSlide] = useState(0);
+	const [switchButton, setSwitchButton] = useState(false);
+	const onClick = () => setSwitchButton(!switchButton);
 
 	const ref = useRef(null);
 	async function fetchComment() {
@@ -65,6 +67,7 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 	useEffect(() => {
 		if (values?.comments) {
 			setPost(values);
+			console.log(values);
 		}
 	}, [values]);
 
@@ -111,7 +114,6 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 				),
 			};
 
-			newPost.caption.replace(/(?:\r\n|\r|\n)/g, '<br>');
 			setPost(newPost);
 			updatePosts(data.id, newPost);
 		} catch (e) {
@@ -243,11 +245,7 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 				</ImageContainer>
 				<Content width={sizeOfcarrousel.widthLess} maxWidth="70">
 					<h4>Data da Postagem</h4>
-					<p>
-						{format(new Date(), "d 'de' MMMM 'de' yyyy 'às' HH:mm", {
-							locale: ptBr,
-						})}
-					</p>
+					<p>{post.formatedPostingDate}</p>
 					<br />
 					<h3>O que achou do post?</h3>
 					<form>
@@ -297,28 +295,53 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 						</div>
 					</form>
 					<div className="content_container">
-						{post.comments &&
-							post.comments.map(oldComment => (
-								<Comment key={oldComment.id} comment={oldComment} f />
-							))}
+						{switchButton ? (
+							<div>
+								{post.comments &&
+									post.comments.map(oldComment => (
+										<Comment key={oldComment.id} comment={oldComment} f />
+									))}
+							</div>
+						) : null}
+						{!switchButton ? (
+							<div>
+								<h4>Legenda</h4>
+								<p className="display-linebreak">{post?.caption}</p>
+							</div>
+						) : null}
 					</div>
 
 					<div className="newPost">
-						<label>Aperte enter para postar seu comentário</label>
-						<input
-							placeholder="Seu comentário sobre esse post"
-							value={comment}
-							onChange={e => setComment(e.target.value)}
-							onKeyPress={key => {
-								if (key.key === 'Enter' && comment) {
-									fetchComment();
-								}
-							}}
-						/>
+						{switchButton ? (
+							<label>Aperte enter para postar seu comentário</label>
+						) : null}
+						{switchButton ? (
+							<div>
+								<input
+									placeholder="Seu comentário sobre esse post"
+									value={comment}
+									onChange={e => setComment(e.target.value)}
+									onKeyPress={key => {
+										if (key.key === 'Enter' && comment) {
+											fetchComment();
+										}
+									}}
+								/>
+								<button type="button" id="smallButton" onClick={onClick}>
+									Ver Legenda
+								</button>
+							</div>
+						) : null}
+						{!switchButton ? (
+							<div>
+								<button type="button" id="fullButton" onClick={onClick}>
+									Deixar um comentário
+								</button>
+							</div>
+						) : null}
 					</div>
 				</Content>
 			</div>
-			<p className="content_text">{post?.caption}</p>
 		</Container>
 	);
 };
