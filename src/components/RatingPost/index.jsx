@@ -245,7 +245,7 @@ const RatingPost = ({ closeModal, values, user, clientToken, updatePosts }) => {
 				</ImageContainer>
 				<Content width={sizeOfcarrousel.widthLess} maxWidth="70">
 					<h4>Data da Postagem</h4>
-					<p>{post?.formatedPostingDate}</p>
+					<p>{post?.postingDate}</p>
 					<br />
 					<h3>O que achou do post?</h3>
 					<form>
